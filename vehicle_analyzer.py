@@ -22,15 +22,15 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description='Vehicle Price Analyzer')
     parser.add_argument('--output-dir', type=str, default='scraped_vehicles',
                         help='Directory to save scraped data')
-    parser.add_argument('--manufacturer', type=int, default=19,
+    parser.add_argument('--manufacturer', type=int, default=30,
                         help='Manufacturer ID to scrape')
-    parser.add_argument('--model', type=int, default=12894,
+    parser.add_argument('--model', type=int, default=10381,
                         help='Model ID to scrape')
     parser.add_argument('--max-pages', type=int, default=25,
                         help='Maximum number of pages to scrape')
     parser.add_argument('--skip-scrape', action='store_true',
                         help='Skip scraping and use existing data')
-    parser.add_argument('--port', type=int, default=8050,
+    parser.add_argument('--port', type=int, default=8080,
                         help='Port to run the web server on')
     return parser.parse_args()
 
@@ -723,7 +723,7 @@ def create_dashboard(df, port=8050):
     
     # Run the app
     print(f"Starting dashboard on http://127.0.0.1:{port}/")
-    app.run_server(debug=False, port=port)
+    app.run(debug=False, port=port)
 
 def main():
     args = parse_arguments()
